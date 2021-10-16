@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::check()){
+         return view('home',[App\Http\Controllers\DefaultController::class, 'index']);
+    }else{
+        return redirect('/login');
+    }
 });
+
+Route::middleware(['auth'])->prefix('git')->group(function(){
+    Route::get('/fetch_user_data',[App\Http\Controllers\DefaultController::class,'fetchUserData'])->name('fetch_user_data');
+});
+
+
+Auth::routes();

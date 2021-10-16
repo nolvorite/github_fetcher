@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'github' => [
+        'client_id' => env('CLIENT_ID_GITHUB'),
+        'client_secret' => env('CLIENT_SECRET_GITHUB') ,
+        'redirect' => env('APP_URL').'/complete_registration'
+    ]
+
 ];
